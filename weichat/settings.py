@@ -23,6 +23,9 @@ SECRET_KEY = 'zw)-!_ts-m$(s8o3qgao^7%-cebej6&3e*rmmghe_xy97=kn_d'
 DEBUG = True
 
 TEMPLATE_DEBUG = True
+TEMPLATE_DIRS = (  
+    os.path.join(os.path.dirname(__file__), 'templates'),  
+)
 
 ALLOWED_HOSTS = []
 
@@ -59,23 +62,7 @@ MANAGERS = ADMINS
 
 import os
 
-if 'SERVER_SOFTWARE' in os.environ:
-    from sae.const import (
-        MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASS, MYSQL_DB
-    )
-else:
-    # Make `python manage.py syncdb` works happy!
-    MYSQL_HOST = 'localhost'
-    MYSQL_PORT = '3306'
-    MYSQL_USER = 'root'
-    MYSQL_PASS = 'root'
-    MYSQL_DB = 'app_pylabs'
-
-
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
+from sae.const import (MYSQL_HOST, MYSQL_PORT, MYSQL_USER, MYSQL_PASS, MYSQL_DB)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -89,7 +76,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-CN'
 
 TIME_ZONE = 'UTC'
 
